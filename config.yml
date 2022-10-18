@@ -1,0 +1,22 @@
+# This is the minimal config file for an NNI experiment.
+# Use "nnictl create --config config.yml" to launch this experiment.
+# Afterwards, you can check "config_detailed.yml" for more explanation.
+authorName: TestGPU
+experimentName: mnist-test
+searchSpaceFile: search_space.json
+
+trialConcurrency: 12
+
+tuner:
+  name: GridSearch
+
+
+trainingService:
+  platform: local
+
+maxTrialNumPerGpu: 3
+
+trial:
+  command: python train.py
+  codeDir: .
+  gpuNum: 1
